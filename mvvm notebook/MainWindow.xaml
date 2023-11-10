@@ -1,0 +1,62 @@
+﻿<Window x:Class="mvvm_notebook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:mvvm_notebook"
+        mc:Ignorable="d"
+        Title="Notebook" Height="450" Width="800" Background="#353C47">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListBox ItemsSource="{Binding PeopleList}" IsSynchronizedWithCurrentItem="True" SelectedIndex="2" Background="#748CB5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="LightBlue" BorderThickness="1" Margin="10">
+                        <StackPanel Margin="10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Имя:" FontSize="15" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding FullName}" FontSize="15" Margin="10,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Адрес: " FontSize="15" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Address}" FontSize="15" Margin="10,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Телефон:" FontSize="15" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Phone}" FontSize="15" Margin="10,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ContentControl Grid.Column="1" Background="#353C47">
+            <ContentControl.ContentTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="LightBlue" BorderThickness="1" Margin="10">
+                        <StackPanel Margin="10">
+                            <!--<StackPanel.InputBindings >
+                            <KeyBinding Command="{Binding GiveItemCommand}" Key="B" Modifiers="Ctrl"/>
+                            <KeyBinding Command="{Binding GetItemCommand}" Key="G" Modifiers="Ctrl"/>
+                        </StackPanel.InputBindings>-->
+                            <TextBlock Text="ФИО:" Foreground="#DCF9B7" FontWeight="Bold" FontSize="15"/>
+                            <TextBox Margin="0,0,0,10"/>
+                            <TextBlock Text="Адрес:" Foreground="#DCF9B7" FontWeight="Bold" FontSize="15"/>
+                            <TextBox Margin="0,0,0,10"/>
+                            <TextBlock Text="Телефон:" Foreground="#DCF9B7" FontWeight="Bold" FontSize="15"/>
+                            <TextBox Margin="0,0,0,10"/>
+                            <Button Content="Новый контакт" Margin="5" Foreground="#DCF9B7" FontWeight="Bold" FontSize="15" Background="#262933" BorderThickness="0"/>
+                            <Button Content="Сохранить" Margin="5" Foreground="#DCF9B7" FontWeight="Bold" FontSize="15" Background="#262933" BorderThickness="0"/>
+                            <Button Content="Удалить" Margin="5" Foreground="#DCF9B7" FontWeight="Bold" FontSize="15" Background="#262933" BorderThickness="0"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ContentControl.ContentTemplate>
+        </ContentControl>
+    </Grid>
+</Window>
