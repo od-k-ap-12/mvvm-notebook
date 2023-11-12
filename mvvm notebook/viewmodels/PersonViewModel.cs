@@ -1,15 +1,20 @@
-﻿using mvvm_notebook.models;
+﻿using mvvm_notebook.commands;
+using mvvm_notebook.models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Windows.Input;
 
 namespace mvvm_notebook.viewmodels
 {
+    [Serializable]
+    [DataContract]
     internal class PersonViewModel:ViewModelBase
     {
-        private Person Person;
+        [DataMember]
+        public Person Person;
 
         public PersonViewModel(Person person)
         {

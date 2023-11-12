@@ -17,13 +17,7 @@ namespace mvvm_notebook
     {
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            List<Person> people = new List<Person>()
-            {
-                new Person("Name1", "Address1", "1"),
-                new Person("Name2", "Address2", "2"),
-                new Person("Name3", "Address3", "3"),
-                new Person("Name4", "Address4", "4")
-            };
+            List<Person> people = new List<Person>();
 
             MainWindow view = new MainWindow();
             MainViewModel viewModel = new MainViewModel(people);
