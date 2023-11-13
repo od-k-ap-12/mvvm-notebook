@@ -40,7 +40,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <ContentControl Grid.Row="0" Background="#353C47" Content="{Binding PeopleList}">
+            <ContentControl Grid.Row="0" Background="#353C47" >
                 <ContentControl.ContentTemplate>
                     <DataTemplate>
                         <Border BorderBrush="LightBlue" BorderThickness="1" Margin="10">

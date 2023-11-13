@@ -110,19 +110,26 @@ namespace mvvm_notebook.viewmodels
 
         private void LoadFromFile()
         {
-            FileStream stream = null;
-            DataContractJsonSerializer jsonFormatter = null;
-            stream = new FileStream("../../notebook.json", FileMode.Open);
-            jsonFormatter = new DataContractJsonSerializer(typeof(List<Person>));
-            List<Person> PeopleToLoad = new List<Person>();
-            PeopleToLoad = (List<Person>)jsonFormatter.ReadObject(stream);
-            PeopleList.Clear();
-            foreach (Person p in PeopleToLoad)
+            if (File.Exists("../../notebook.json"))
             {
-                PeopleList.Add(new PersonViewModel(p));
+                FileStream stream = null;
+                DataContractJsonSerializer jsonFormatter = null;
+                stream = new FileStream("../../notebook.json", FileMode.Open);
+                jsonFormatter = new DataContractJsonSerializer(typeof(List<Person>));
+                List<Person> PeopleToLoad = new List<Person>();
+                PeopleToLoad = (List<Person>)jsonFormatter.ReadObject(stream);
+                PeopleList.Clear();
+                foreach (Person p in PeopleToLoad)
+                {
+                    PeopleList.Add(new PersonViewModel(p));
+                }
+                stream.Close();
+                MessageBox.Show("Десериализация успешно выполнена!");
             }
-            stream.Close();
-            MessageBox.Show("Десериализация успешно выполнена!");
+            else
+            {
+                MessageBox.Show("Нет доступных сохранений");
+            }
         }
     }
 }
